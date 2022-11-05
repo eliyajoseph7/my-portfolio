@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">  
 
     <title>Portfolio</title>
 
@@ -13,7 +14,7 @@
 
     <style>
         body {
-            font-family: 'Nunito', sans-serif;
+            /* font-family: 'Nunito', sans-serif; */
             background-color: #F3F2EF;
         }
     </style>
@@ -23,8 +24,10 @@
 </head>
 
 <body class="antialiased h-full">
-    @include('layouts.frontend.components.header')
+    @include('layouts.frontend.components.nav')
 
+    @livewire('home')
+    @include('layouts.frontend.components.footer')
     @livewireScripts
 </body>
 
