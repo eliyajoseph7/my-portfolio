@@ -24,8 +24,19 @@ class Home extends Component
             ]
         ]
     ];
+
+    public $showEnd = 'hidden';
+    public $toPresent = 'checked';
+
+    public $skills = [];
+    public $projects;
+    protected $listeners = [
+        'getSkills'
+     ];
+     
     
     public function mount() {
+        app('App\Http\Livewire\ProjectAndSkill')->skills();
         $this->experience = 'hidden';
     }
 
@@ -40,5 +51,21 @@ class Home extends Component
 
     public function hideAddExperience() {
         $this->experience = 'hidden';
+    }
+
+    public function toggleEndDate() {
+        if($this->showEnd == 'hidden') {
+            $this->showEnd = 'flex';
+        } else {
+            $this->showEnd = 'hidden';
+        }
+    }
+
+
+
+    public function getSkills($value)
+    {
+        dd('$value');
+        $this->skills = $value;
     }
 }
