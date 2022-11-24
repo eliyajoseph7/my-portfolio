@@ -23,7 +23,8 @@
     <script src="{{ url('assets/flowbite/dist/flowbite.js') }}"></script>
     <!-- <script src="{{ url('assets/flowbite/dist/flowbite.css') }}"></script> -->
     @livewireStyles
-    @vite('resources/css/app.css')
+    <!-- @vite('resources/css/app.css') -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <body class="antialiased h-full">

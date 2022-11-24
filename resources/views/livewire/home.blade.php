@@ -1,20 +1,20 @@
 <div class="container mx-auto">
-    <div class="grid grid-flow-row lg:grid-flow-col lg:grid-cols-4 gap-3 auto-cols-max md:auto-cols-min py-5">
+    <div class="grid grid-flow-row lg:grid-flow-col lg:grid-cols-4 lg:gap-3 auto-cols-max md:auto-cols-auto py-5">
         <div class="lg:col-span-3">
             @include('layouts.frontend.components.header')
             <div class="border bg-white shadow-sm rounded-lg mb-5 border-t-slate-300">
                 <div class="p-5">
                     <h3 class="text-gray-800 py-1 tracking-tight hover:text-gray-900 cursor-pointer text-3xl font-bold dark:text-white font-mono">Professional Summary</h3>
                     <hr>
-                    <div class="block lg:grid lg:grid-flow-col lg:grid-cols-3">
-                        <p class="lg:col-span-2 text-gray-700 leading-relaxed text-lg dark:text-white w-full px-3 bg-slate-50 bg-clip-border">
+                    <div class="lg:grid lg:grid-flow-col lg:grid-cols-1 w-96 md:w-full">
+                        <div class="lg:col-span-2 col-span-1 text-gray-700 text-justify leading-relaxed text-lg dark:text-white w-96 md:w-full px-3 bg-slate-50 bg-clip-border">
+                            <a href="#" class="float-left flex lg:ml-auto  w-24 pb-6 min-w-md bg-black rounded-3xl ring-4 mr-5  hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 h-20 lg:h-24 bg-no-repeat bg-cover bg-center" style="background-image: url('https://www.classicinformatics.com/hubfs/custom%20software%20development%20company%20%281%29.png');">
+                            </a>
                             Knowledgeable Software developer offering 4 + years leading cross-functional
                             teams and completing projects on-time. Seamlessly manages workloads and
                             meets challenging deadlines and quality benchmarks. Strong understanding of
                             common web technologies, languages and frameworks..
-                        </p>
-                        <a href="#" class="lg:col-span-1 block lg:ml-auto  w-96 pb-6 min-w-md bg-black rounded-t-xl  hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 h-32 lg:h-48 bg-no-repeat bg-cover bg-center" style="background-image: url('https://www.classicinformatics.com/hubfs/custom%20software%20development%20company%20%281%29.png');">
-                        </a>
+                        </div>
                         <!-- <img src="https://www.classicinformatics.com/hubfs/custom%20software%20development%20company%20%281%29.png" alt="me" class="rounded-md cursor-pointer border-4 img-fluid bg-cover border-white w-96 h-32 lg:w-96 lg:h-36 ring-8 ring-offset-0 ring-white ring-inset lg:m-auto"> -->
                         <!-- <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolore eos vitae nobis quasi cumque omnis!</p> -->
                     </div>
@@ -22,9 +22,12 @@
             </div>
             <div class="border bg-white shadow-sm rounded-lg border-b-slate-200">
                 <div class="p-5">
-                    <div class="float-right">
-                        <i class="fa fa-plus-circle fa-2xl cursor-pointer text-blue-400 hover:text-blue-800 p-3 relative " aria-labelledby="add-experience" role="dialog" aria-modal="true" wire:click="showAddExperience()"></i>
-                    </div>
+                    @if (auth()->check())
+                        <div class="float-right">
+                            <i class="fa fa-plus-circle fa-2xl cursor-pointer text-blue-400 hover:text-blue-800 p-3 relative " aria-labelledby="add-experience" role="dialog" aria-modal="true" wire:click="showAddExperience()"></i>
+                        </div>
+                        
+                    @endif
                     <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity {{$experience}} " wire:click="hideAddExperience()"></div>
 
                     @include('layouts.frontend.components.add_experience')
@@ -32,12 +35,12 @@
                     <hr>
                     <div class="">
                         @forelse ($experiences as $exp)
-                        <h1 class="text-3xl font-serif italic"><i class="fa fa-star text-gray-500"></i> {{$exp['title']}} - {{ $exp['company'] }}</h1>
-                        <p class="py-1 pl-10 text-lg">{{ $exp['location'] }} {{ $exp['from'] }} - {{ $exp['to'] }}</p>
+                        <h1 class="text-3xl font-serif italic w-96 md:w-full"><i class="fa fa-star text-gray-500"></i> {{$exp['title']}} - {{ $exp['company'] }}</h1>
+                        <p class="py-1 pl-10 text-lg w-96 md:w-full">{{ $exp['location'] }} {{ $exp['from'] }} - {{ $exp['to'] }}</p>
                         <p class="py-1 pl-10 text-lg"></p>
 
                         <h2 class="pl-10 mb-2 text-lg font-semibold italic text-gray-900 dark:text-white">Achievements:</h2>
-                        <ul class="space-y-1 p-5 list-inside text-gray-500 dark:text-gray-400">
+                        <ul class="space-y-1 p-5 list-inside text-gray-500 dark:text-gray-400 w-96 md:w-full">
                             @forelse ($exp['achievements'] as $task)
                             <li class="flex items-center pl-5">
                                 <i class="fa fa-check-circle w-4 h-4 mr-1.5 text-green-500 dark:text-green-400 flex-shrink-0 " fill="currentColor"></i>
@@ -61,7 +64,7 @@
             </div>
 
         </div>
-        <div class="lg:colspan-2">
+        <div class="lg:colspan-2 mt-5 lg:mt-0">
             @livewire('project-and-skill')
 
         </div>

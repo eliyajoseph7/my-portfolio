@@ -1,5 +1,5 @@
 
-<footer class="p-4 bg-white rounded-lg shadow md:px-6 md:py-8 dark:bg-gray-900">
+<footer class="p-4 bg-white rounded-lg shadow md:px-6 md:py-8 dark:bg-gray-900 w-screen">
     <div class="container mx-auto sm:flex sm:items-center sm:justify-between">
         <a class="inline-flex items-center bg-blue-700 hover:bg-blue-800 text-white font-bold my-2 px-2 focus:ring-blue-700 cursor-pointer rounded-md text-4xl">
                 iJn

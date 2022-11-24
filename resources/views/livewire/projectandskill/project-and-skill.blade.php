@@ -1,10 +1,11 @@
 <div class="">
     <div class="border bg-white rounded-lg mb-5">
         <div class="p-5">
-            <div class="float-right">
-                <i class="fa fa-plus-circle fa-xl cursor-pointer text-blue-400 hover:text-blue-800 pr-3 relative  {{ $hide }}" aria-labelledby="add-skill" role="dialog" aria-modal="true" wire:click="showAddSkill()"></i>
-            </div>
-
+            @if (auth()->check())
+                <div class="float-right">
+                    <i class="fa fa-plus-circle fa-xl cursor-pointer text-blue-400 hover:text-blue-800 pr-3 relative  {{ $hide }}" aria-labelledby="add-skill" role="dialog" aria-modal="true" wire:click="showAddSkill()"></i>
+                </div>
+            @endif
             <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity {{$skill}} " wire:click="hideAddSkill()"></div>
 
             @include('livewire.projectandskill.add_skill')
@@ -20,10 +21,11 @@
     
     <div class="border bg-white rounded-lg">
         <div class="p-5">
-            <div class="float-right">
-                <i class="fa fa-plus-circle fa-xl cursor-pointer text-blue-400 hover:text-blue-800 pr-3 relative {{ $hide }} " aria-labelledby="add-project" role="dialog" aria-modal="true" wire:click="showAddProject()"></i>
-            </div>
-
+            @if (auth()->check())
+                <div class="float-right">
+                    <i class="fa fa-plus-circle fa-xl cursor-pointer text-blue-400 hover:text-blue-800 pr-3 relative {{ $hide }} " aria-labelledby="add-project" role="dialog" aria-modal="true" wire:click="showAddProject()"></i>
+                </div>
+            @endif
             <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity {{$project}} " wire:click="hideAddProject()"></div>
 
             @include('livewire.projectandskill.add_project')

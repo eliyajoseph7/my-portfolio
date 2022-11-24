@@ -16,6 +16,11 @@ class LoginRequest extends FormRequest
      *
      * @return bool
      */
+
+
+    protected $loginField;
+    protected $loginValue;
+
     public function authorize()
     {
         return true;
@@ -29,8 +34,9 @@ class LoginRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => ['required', 'string', 'email'],
-            'password' => ['required', 'string'],
+            'email' => 'required_without:username|string|email|exists:users,email',
+            'username' => 'required_without:email|string|exists:users,username',
+            'password' => 'required|string',
         ];
     }
 
@@ -45,11 +51,20 @@ class LoginRequest extends FormRequest
     {
         $this->ensureIsNotRateLimited();
 
-        if (! Auth::attempt($this->only('email', 'password'), $this->boolean('remember'))) {
-            RateLimiter::hit($this->throttleKey());
+        // if (!Auth::attempt($this->only('email', 'password'), $this->boolean('remember'))) {
+        //     RateLimiter::hit($this->throttleKey());
 
+        //     throw ValidationException::withMessages([
+        //         'email' => trans('auth.failed'),
+        //     ]);
+        // }
+        if (!Auth::attempt(
+            $this->only($this->loginField, 'password'),
+            $this->boolean('remember')
+        )) {
+            RateLimiter::hit($this->throttleKey());
             throw ValidationException::withMessages([
-                'email' => trans('auth.failed'),
+                'login' => __('auth.failed')
             ]);
         }
 
@@ -65,7 +80,7 @@ class LoginRequest extends FormRequest
      */
     public function ensureIsNotRateLimited()
     {
-        if (! RateLimiter::tooManyAttempts($this->throttleKey(), 5)) {
+        if (!RateLimiter::tooManyAttempts($this->throttleKey(), 5)) {
             return;
         }
 
@@ -88,6 +103,16 @@ class LoginRequest extends FormRequest
      */
     public function throttleKey()
     {
-        return Str::transliterate(Str::lower($this->input('email')).'|'.$this->ip());
+        return Str::transliterate(Str::lower($this->input('email')) . '|' . $this->ip());
+    }
+
+    protected function prepareForValidation()
+    {
+        $this->loginField = filter_var(
+            $this->input('login'),
+            FILTER_VALIDATE_EMAIL
+        ) ? 'email' : 'username';
+        $this->loginValue = $this->input('login');
+        $this->merge([$this->loginField => $this->loginValue]);
     }
 }
