@@ -23,10 +23,18 @@ return new class extends Migration
         // Insert some stuff
         DB::table('roles')->insert(
             array(
-                'role' => 'Admin',
-                'slug' => 'admin',
-                'created_at' => now(),
-                'updated_at' => now()
+                [
+                    'role' => 'Admin',
+                    'slug' => 'admin',
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ],
+                [
+                    'role' => 'User',
+                    'slug' => 'user',
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ],
             )
         );
     }

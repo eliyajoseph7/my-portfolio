@@ -12,7 +12,10 @@
             <h3 class="text-left py-1 font-bold text-3xl tracking-tight text-gray-800 hover:text-gray-900 cursor-pointer dark:text-white font-serif">Skills</h3>
             <hr>
             @forelse ($skills as $skill)
-                <p>{{ $skill }}</p>
+            <div class="flex justify-between skill cursor-pointer" rmv="skill{{ $loop->iteration }}" icn="skl{{ $loop->iteration }}">
+                <p><i class="fa fa-check-circle" id="skl{{ $loop->iteration }}"></i>{{ $skill->skill }}</p>
+                <a href="#" class="text-white hidden" id="skill{{ $loop->iteration }}" wire:click="deleteSkill({{ $skill->id }})"><i class="fa fa-minus fa-md px-2 py-1 bg-red-700 hover:bg-red-800 rounded-md "></i></a>
+            </div>
             @empty
                 <p>No any skill</p>
             @endforelse
@@ -42,3 +45,13 @@
 
 </div>
 
+<script>
+    $(".skill").hover(function(){
+        var id = $(this).attr('rmv');
+        $('#' + id).css("display", "block");
+        $('#' + $(this).attr('icn')).css("color", "#234B9F");
+    }, function(){
+        $('#' + $(this).attr('rmv')).css("display", "none");
+        $('#' + $(this).attr('icn')).css("color", "black");
+    });
+</script>
