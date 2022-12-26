@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Project;
 use App\Models\Skill;
 use Livewire\Component;
 
@@ -16,7 +17,8 @@ class ProjectAndSkill extends Component
     public $hide = '';
 
     protected $rules = [
-        'skill' => 'required|min:5'
+        'skill' => 'required|min:5',
+        'project' => 'required|min:5',
     ];
 
     public function mount()
@@ -37,6 +39,7 @@ class ProjectAndSkill extends Component
     public function render()
     {
         $this->skills = Skill::where('user_id', auth()->user()->id)->get();
+        $this->projects = Project::where('user_id', auth()->user()->id)->get();
         return view('livewire.projectandskill.project-and-skill');
     }
 
@@ -79,5 +82,23 @@ class ProjectAndSkill extends Component
     public function hideAddProject() {
         $this->project = 'hidden';
         $this->reset('hide');
+    }
+
+    public function addProject() {
+        $this->validate();
+        Project::create([
+            'project' => $this->project,
+            'user_id' => auth()->user()->id
+        ]);
+        // array_push($this->projects, $this->project);
+        session()->flash('feedback', 'Project successfully added.');
+        $this->reset('project');
+        $this->render();
+
+    }
+
+    public function deleteProject($projectId) {
+        Project::find($projectId)->delete();
+        $this->render();
     }
 }

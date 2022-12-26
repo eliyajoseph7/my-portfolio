@@ -13,7 +13,7 @@
             <hr>
             @forelse ($skills as $skill)
             <div class="flex justify-between skill cursor-pointer" rmv="skill{{ $loop->iteration }}" icn="skl{{ $loop->iteration }}">
-                <p><i class="fa fa-check-circle" id="skl{{ $loop->iteration }}"></i>{{ $skill->skill }}</p>
+                <p><i class="fa fa-check-circle pr-1" id="skl{{ $loop->iteration }}"></i>{{ $skill->skill }}</p>
                 <a href="#" class="text-white hidden" id="skill{{ $loop->iteration }}" wire:click="deleteSkill({{ $skill->id }})"><i class="fa fa-minus fa-md px-2 py-1 bg-red-700 hover:bg-red-800 rounded-md "></i></a>
             </div>
             @empty
@@ -36,7 +36,10 @@
             <h3 class="text-gray-800 py-1 hover:text-gray-900 font-bold text-3xl tracking-tight cursor-pointer dark:text-white font-serif">Projects</h3>
             <hr>
             @forelse ($projects as $project)
-                <p>{{ $project }}</p>
+            <div class="flex justify-between project cursor-pointer" rmv="project{{ $loop->iteration }}" icn="prj{{ $loop->iteration }}">
+                <p><i class="fa fa-check-circle pr-1" id="prj{{ $loop->iteration }}"></i>{{ $project->project }}</p>
+                <a href="#" class="text-white hidden" id="project{{ $loop->iteration }}" wire:click="deleteProject({{ $project->id }})"><i class="fa fa-minus fa-md px-2 py-1 bg-red-700 hover:bg-red-800 rounded-md "></i></a>
+            </div>
             @empty
                 <p>No any project</p>
             @endforelse
@@ -47,6 +50,15 @@
 
 <script>
     $(".skill").hover(function(){
+        var id = $(this).attr('rmv');
+        $('#' + id).css("display", "block");
+        $('#' + $(this).attr('icn')).css("color", "#234B9F");
+    }, function(){
+        $('#' + $(this).attr('rmv')).css("display", "none");
+        $('#' + $(this).attr('icn')).css("color", "black");
+    });
+
+    $(".project").hover(function(){
         var id = $(this).attr('rmv');
         $('#' + id).css("display", "block");
         $('#' + $(this).attr('icn')).css("color", "#234B9F");
