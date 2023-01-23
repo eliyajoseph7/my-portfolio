@@ -4,13 +4,14 @@ namespace App\Http\Livewire;
 
 use App\Models\Project;
 use App\Models\Skill;
+use App\Models\User;
 use Livewire\Component;
 
 class ProjectAndSkill extends Component
 {
 
     public $skills = [];
-    public $projects = ['one', 'two', 'three'];
+    public $projects = [];
 
     public $skill;
     public $project;
@@ -26,8 +27,12 @@ class ProjectAndSkill extends Component
         // $this->emit('getSkills', $this->skills);
         $this->skill = 'hidden';
         $this->project = 'hidden';
-
-        $this->skills = Skill::where('user_id', auth()->user()->id)->get();
+        if (auth()->check()) {
+            $this->skills = Skill::where('user_id', auth()->user()->id)->get();
+        } else {
+            $user = User::where('role_id', 1)->first();
+            $this->skills = Skill::where('user_id', $user->id)->get();
+        }
     }
 
     public function skills()
@@ -38,24 +43,33 @@ class ProjectAndSkill extends Component
 
     public function render()
     {
-        $this->skills = Skill::where('user_id', auth()->user()->id)->get();
-        $this->projects = Project::where('user_id', auth()->user()->id)->get();
+        if (auth()->check()) {
+            $this->skills = Skill::where('user_id', auth()->user()->id)->get();
+            $this->projects = Project::where('user_id', auth()->user()->id)->get();
+        } else {
+            $user = User::where('role_id', 1)->first();
+            $this->skills = Skill::where('user_id', $user->id)->get();
+            $this->projects = Project::where('user_id', $user->id)->get();
+        }
         return view('livewire.projectandskill.project-and-skill');
     }
 
 
     // skills
-    public function showAddSkill() {
+    public function showAddSkill()
+    {
         $this->skill = '';
         $this->hide = 'hidden';
     }
 
-    public function hideAddSkill() {
+    public function hideAddSkill()
+    {
         $this->skill = 'hidden';
         $this->reset('hide');
     }
 
-    public function addSkill() {
+    public function addSkill()
+    {
         $this->validate();
         Skill::create([
             'skill' => $this->skill,
@@ -65,26 +79,29 @@ class ProjectAndSkill extends Component
         session()->flash('feedback', 'Skill successfully added.');
         $this->reset('skill');
         $this->render();
-
     }
 
-    public function deleteSkill($skillId) {
+    public function deleteSkill($skillId)
+    {
         Skill::find($skillId)->delete();
         $this->render();
     }
 
     // projects
-    public function showAddProject() {
+    public function showAddProject()
+    {
         $this->project = '';
         $this->hide = 'hidden';
     }
 
-    public function hideAddProject() {
+    public function hideAddProject()
+    {
         $this->project = 'hidden';
         $this->reset('hide');
     }
 
-    public function addProject() {
+    public function addProject()
+    {
         $this->validate();
         Project::create([
             'project' => $this->project,
@@ -94,10 +111,10 @@ class ProjectAndSkill extends Component
         session()->flash('feedback', 'Project successfully added.');
         $this->reset('project');
         $this->render();
-
     }
 
-    public function deleteProject($projectId) {
+    public function deleteProject($projectId)
+    {
         Project::find($projectId)->delete();
         $this->render();
     }

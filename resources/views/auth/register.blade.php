@@ -2,7 +2,10 @@
     <x-auth-card>
         <x-slot name="logo">
             <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+                <!-- <x-application-logo class="w-20 h-20 fill-current text-gray-500" /> -->
+                <a class="inline-flex items-center bg-blue-700 hover:bg-blue-800 text-white font-bold my-2 px-2 focus:ring-blue-700 cursor-pointer rounded-md text-4xl">
+                    iJn
+                </a>
             </a>
         </x-slot>
 

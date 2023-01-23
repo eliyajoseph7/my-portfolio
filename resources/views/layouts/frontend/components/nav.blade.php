@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="bg-white h-14 sha dow-sm mb-4 sticky w-screen border-b border-gray-100">
+<nav x-data="{ open: false }" class="bg-white h-14 sha dow-sm mb-4 fixed top-0 left-0 right-0 z-30 w-screen border-b border-gray-100">
     <div class="container mx-auto grid grid-flow-col grid-cols-3 gap-4 h-full px-2">
         <div class="colspan-2 ">
             <a class="inline-flex items-center bg-blue-700 hover:bg-blue-800 text-white font-bold my-2 px-2 focus:ring-blue-700 cursor-pointer rounded-md text-4xl">

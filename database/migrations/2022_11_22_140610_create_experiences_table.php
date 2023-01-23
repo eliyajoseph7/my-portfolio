@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -23,6 +24,21 @@ return new class extends Migration
             $table->foreignId('user_id')->unsigned()->nullable();
             $table->timestamps();
         });
+
+        DB::table('experiences')->insert(
+
+            [
+                'title' => 'Software Engineer',
+                'location' => 'Dar es Salaam',
+                'company' => 'Multics Systems',
+                'from' => '10/2020',
+                'to' => 'Present',
+                'user_id' => 1,
+                'created_at' => now(),
+                'updated_at' => now()
+            ]
+
+        );
     }
 
     /**

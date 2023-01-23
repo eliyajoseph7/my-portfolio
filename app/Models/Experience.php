@@ -9,5 +9,11 @@ class Experience extends Model
 {
     use HasFactory;
 
-    // public function
+    protected $fillable = [
+        'title', 'company', 'location', 'from', 'to', 'user_id'
+    ];
+
+    public function achievements() {
+        return $this->hasMany(Achievement::class);
+    }
 }

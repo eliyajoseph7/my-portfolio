@@ -27,14 +27,20 @@
     @livewireStyles
     <!-- @vite('resources/css/app.css') -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @livewireScripts
 </head>
 
-<body class="antialiased h-full">
-    @include('layouts.frontend.components.nav')
+<body class="antialiased h-full w-screen">
+    <div class="w-ful">
+        @include('layouts.frontend.components.nav')
+    
+        <div class="mt-14">
 
-    @livewire('home')
-    @include('layouts.frontend.components.footer')
-    @livewireScripts
+            @livewire('home')
+            @include('layouts.frontend.components.footer')
+        </div>
+
+    </div>
 
     <script>
         tinymce.init({

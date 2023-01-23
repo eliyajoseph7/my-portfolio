@@ -424,7 +424,7 @@ const locales = {
 ;// CONCATENATED MODULE: ./node_modules/flowbite-datepicker/js/options/defaultOptions.js
 // config options updatable by setOptions() and their default values
 const defaultOptions = {
-  autohide: false,
+  autohide: true,
   beforeShowDay: null,
   beforeShowDecade: null,
   beforeShowMonth: null,
@@ -437,8 +437,7 @@ const defaultOptions = {
   daysOfWeekHighlighted: [],
   defaultViewDate: undefined, // placeholder, defaults to today() by the program
   disableTouchKeyboard: false,
-  // format: 'mm/dd/yyyy',
-  format: 'mm/yyyy',
+  format: 'mm/dd/yyyy',
   language: 'en',
   maxDate: null,
   maxNumberOfDates: 1,
