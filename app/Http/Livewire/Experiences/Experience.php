@@ -136,4 +136,23 @@ class Experience extends Component
         session()->flash('feedback', 'Experience successfully added.');
         $this->reset(['title', 'company', 'location', 'start', 'achievements', 'end', 'achievementRows']);
     }
+
+    // edit experience
+
+    public function showEditExperience($id)
+    {
+        $this->experience = '';
+        $qs = ModelsExperience::with('achievements')->find($id);
+        $this->title = $qs->title;
+        $this->company = $qs->company;
+        $this->location = $qs->location;
+        $this->start = $qs->from;
+        $this->end = $qs->to;
+
+        // dump($qs->achievements->count());
+        $this->achievementLenght = $qs->achievements->count();
+        foreach($qs->achievements as $q) {
+            array_push($this->achievements, $q->achievement);
+        }
+    }
 }

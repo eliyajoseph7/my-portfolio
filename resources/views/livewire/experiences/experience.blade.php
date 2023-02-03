@@ -13,7 +13,14 @@
         <hr>
         <div class="w-full">
             @forelse ($experiences as $exp)
-            <h1 class="text-3xl font-serif italic w-96 md:w-full"><i class="fa fa-star text-gray-500"></i> {{$exp->title}} - {{ $exp->company }}</h1>
+            <div class="">
+                <h1 class="text-3xl font-serif italic w-96 md:w-full">
+                    <i class="fa fa-star text-gray-500"></i> {{$exp->title}} - {{ $exp->company }}
+                    @auth ()
+                        <i class="fa fa-edit fa-sm items-center cursor-pointer text-blue-400 hover:text-blue-800 p-3 relative " aria-labelledby="add-experience" role="dialog" aria-modal="true" wire:click="showEditExperience({{ $exp->id }})"></i>
+                    @endauth
+                </h1>
+            </div>
             <a class="py-1 pl-10 text-lg w-96 md:w-full">{{ $exp->location }} {{ $exp->from }} - {{ $exp->to }}</a>
             <a class="py-1 pl-10 text-lg w-full"></a>
 

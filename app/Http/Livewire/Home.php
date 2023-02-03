@@ -2,18 +2,23 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Summary;
+use Illuminate\Support\Facades\Session;
 use Livewire\Component;
 
 class Home extends Component
 {
     
     protected $listeners = [
-        'getSkills'
+        'clearSession',
      ];
+     public $mysummary = '';
+
+
      
     
     public function mount() {
-        app('App\Http\Livewire\ProjectAndSkill')->skills();
+        //$this->mysummary = Summary::where('user_id', auth()->user()->id)->first()->summary;
     }
 
     public function render()
@@ -24,10 +29,14 @@ class Home extends Component
 
 
 
-
-    public function getSkills($value)
-    {
-        dd('$value');
-        $this->skills = $value;
+    public function updateSummary($formData) {
+        $this->mysummary = $formData['summary'];
+        $this->emit('update_mysummary', $this->mysummary);
     }
+
+    public function clearSession() {
+        Session::forget('feedback');
+    }
+
+
 }

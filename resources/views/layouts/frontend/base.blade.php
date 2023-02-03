@@ -20,18 +20,20 @@
     </style>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/6.3.1/tinymce.min.js" integrity="sha512-eV68QXP3t5Jbsf18jfqT8xclEJSGvSK5uClUuqayUbF5IRK8e2/VSXIFHzEoBnNcvLBkHngnnd3CY7AFpUhF7w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/6.3.1/tinymce.min.js" integrity="sha512-eV68QXP3t5Jbsf18jfqT8xclEJSGvSK5uClUuqayUbF5IRK8e2/VSXIFHzEoBnNcvLBkHngnnd3CY7AFpUhF7w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
     <script src="{{ url('assets/flowbite/dist/datepicker.js') }}"></script>
     <script src="{{ url('assets/flowbite/dist/flowbite.js') }}"></script>
     <!-- <script src="{{ url('assets/flowbite/dist/flowbite.css') }}"></script> -->
     @livewireStyles
     <!-- @vite('resources/css/app.css') -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    @livewireScripts
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body class="antialiased h-full w-screen">
-    <div class="w-ful">
+    @livewireScripts
+    <div class="w-full">
         @include('layouts.frontend.components.nav')
     
         <div class="mt-14">
@@ -42,9 +44,9 @@
 
     </div>
 
-    <script>
+    <!-- <script>
         tinymce.init({
-            selector: 'textarea',
+            selector: 'textaxrea',
             plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
             toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
         });
@@ -55,7 +57,7 @@
             }
         });
 
-    </script>
+    </script> -->
 </body>
 
 </html>

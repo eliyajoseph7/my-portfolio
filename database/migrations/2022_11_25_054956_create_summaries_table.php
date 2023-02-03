@@ -19,6 +19,22 @@ return new class extends Migration
             $table->foreignId('user_id')->unsigned()->nullable();
             $table->timestamps();
         });
+
+         // Insert some stuff
+         DB::table('summaries')->insert(
+            array(
+                [
+                    'summary' => 
+                            'Knowledgeable Software developer offering 4 + years leading cross-functional
+                            teams and completing projects on-time. Seamlessly manages workloads and
+                            meets challenging deadlines and quality benchmarks. Strong understanding of
+                            common web technologies, languages and frameworks..',
+                    'user_id' => 1,
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ],
+            )
+        );
     }
 
     /**
