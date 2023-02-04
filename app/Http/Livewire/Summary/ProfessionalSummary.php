@@ -19,7 +19,10 @@ class ProfessionalSummary extends Component
    
    public function mount() {
     if(auth()->check()) {
-       $this->mysummary = Summary::where('user_id', auth()->user()->id)->first()->summary;
+       $summary = Summary::where('user_id', auth()->user()->id)->first();
+       if($summary) {
+           $this->mysummary = $summary->summary;
+       }
     } else {
         $user = User::where('role_id', 1)->first();
         $this->mysummary = Summary::where('user_id', $user->id)->first()->summary;

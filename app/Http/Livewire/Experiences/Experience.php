@@ -25,7 +25,8 @@ class Experience extends Component
     public $achievementRows = [];
     public $achievementLenght = 0;
     protected $listeners = [
-        'removeRow'
+        'removeRow',
+        'deleteExperience'
     ];
 
     protected $rules = [
@@ -154,5 +155,10 @@ class Experience extends Component
         foreach($qs->achievements as $q) {
             array_push($this->achievements, $q->achievement);
         }
+    }
+
+    // delete experience
+    public function deleteExperience($id) {
+        ModelsExperience::find($id)->delete();
     }
 }
