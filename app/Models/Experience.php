@@ -10,7 +10,7 @@ class Experience extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title', 'company', 'location', 'from', 'to', 'user_id'
+        'title', 'company', 'location', 'from', 'to', 'user_id', 'achievements'
     ];
 
     public function achievements() {

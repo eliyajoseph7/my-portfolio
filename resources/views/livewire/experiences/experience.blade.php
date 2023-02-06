@@ -27,16 +27,8 @@
                 <a class="py-1 pl-10 text-lg w-full"></a>
     
                 <h2 class="pl-10 mb-2 text-lg font-semibold italic text-gray-900 dark:text-white w-full">Achievements:</h2>
-                <ul class="space-y-1 p-5 list-inside text-gray-500 dark:text-gray-400 w-96 md:w-full">
-                    @forelse ($exp->achievements as $task)
-                    <li class="flex items-center pl-5">
-                        <i class="fa fa-check-circle w-4 h-4 mr-1.5 text-green-500 dark:text-green-400 flex-shrink-0 " fill="currentColor"></i>
-                        {{ $task->achievement }}
-                    </li>
-    
-                    @empty
-                        <p>No any achievement</p>
-                    @endforelse
+                <ul class="space-y-1 px-5 pb-3 list-inside text-gray-500 dark:text-gray-400 w-96 md:w-full">
+                    {!! $exp->achievements !!}
     
                 </ul>
             </div>

@@ -10,14 +10,14 @@ use Livewire\Component;
 
 class Experience extends Component
 {
-    public $action = 'add';
+    public $action = '';
     public $experience;
     public $title = '';
     public $location = '';
     public $company = '';
     public $start = '';
     public $end = 'Present';
-    public $achievements = [];
+    public $achievements = '';
     public $experiences = [];
 
     public $showEnd = 'hidden';
@@ -110,10 +110,15 @@ class Experience extends Component
     public function addExperience($formData)
     {
         $this->start = $formData['start'];
-        $this->validate();
+        // $this->validate();
         if($this->end == '') {
             $this->end = 'Present';
         }
+        if($formData['achievements'] == '') {
+            $this->emit('error', 'Achievement(s) field should be filled!');
+            return;
+        }
+        // dd($formData['achievements']);
         $expr = ModelsExperience::create(
             [
                 'title' => $this->title,
@@ -121,21 +126,12 @@ class Experience extends Component
                 'location' => $this->location,
                 'from' => $this->start,
                 'to' => $this->end,
+                'achievements' => $formData['achievements'],
                 'user_id' => auth()->user()->id
             ]
         );
-
-        $data = [];
-        foreach($this->achievements as $key=>$value) {
-            $data[] = [
-                'achievement' => $value,
-                'experience_id' => $expr->id,
-                'created_at' => now(),
-                'updated_at' => now()
-            ];
-        }
-
-        DB::table('achievements')->insert($data);
+        $this->dispatchBrowserEvent('openjobsaved');
+        $this->emit('feedback', 'Experience successfully added.');
         
         session()->flash('feedback', 'Experience successfully added.');
         $this->reset(['title', 'company', 'location', 'start', 'achievements', 'end', 'achievementRows']);
@@ -145,6 +141,8 @@ class Experience extends Component
 
     public function showEditExperience($id)
     {
+        $this->action = 'edit';
+
         $this->experience = '';
         $qs = ModelsExperience::with('achievements')->find($id);
         $this->title = $qs->title;
@@ -152,16 +150,10 @@ class Experience extends Component
         $this->location = $qs->location;
         $this->start = $qs->from;
         $this->end = $qs->to;
+        $this->achievements = $qs->achievements;
 
-        // dump($qs->achievements->count());
-        $this->achievementLenght = $qs->achievements->count();
-        // $this->achievements = $qs->achievements;
-        $counter = 1;
-        foreach($qs->achievements as $q) {
-            $this->achievements[$counter] = $q->achievement;
-            $counter++;
-        }
-        $this->action = 'edit';
+
+        $this->emit('tinymce-trigger-save');
     }
 
     // delete experience
