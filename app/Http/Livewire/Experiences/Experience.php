@@ -10,6 +10,7 @@ use Livewire\Component;
 
 class Experience extends Component
 {
+    public $action = 'add';
     public $experience;
     public $title = '';
     public $location = '';
@@ -60,11 +61,13 @@ class Experience extends Component
     public function showAddExperience()
     {
         $this->experience = '';
+        $this->action = 'add';
     }
 
     public function hideAddExperience()
     {
         $this->experience = 'hidden';
+        $this->reset(['title', 'company', 'location', 'start', 'achievements', 'end', 'achievementRows']);
     }
 
     public function toggleEndDate()
@@ -152,9 +155,13 @@ class Experience extends Component
 
         // dump($qs->achievements->count());
         $this->achievementLenght = $qs->achievements->count();
+        // $this->achievements = $qs->achievements;
+        $counter = 1;
         foreach($qs->achievements as $q) {
-            array_push($this->achievements, $q->achievement);
+            $this->achievements[$counter] = $q->achievement;
+            $counter++;
         }
+        $this->action = 'edit';
     }
 
     // delete experience
