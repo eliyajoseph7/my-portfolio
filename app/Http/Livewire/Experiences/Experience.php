@@ -11,6 +11,7 @@ use Livewire\Component;
 class Experience extends Component
 {
     public $action = '';
+    public $expID = '';
     public $experience;
     public $title = '';
     public $location = '';
@@ -27,7 +28,8 @@ class Experience extends Component
     public $achievementLenght = 0;
     protected $listeners = [
         'removeRow',
-        'deleteExperience'
+        'deleteExperience',
+        'toggleEndDate'
     ];
 
     protected $rules = [
@@ -50,10 +52,10 @@ class Experience extends Component
     public function render()
     {
         if(auth()->check()) {
-            $this->experiences = ModelsExperience::with('achievements')->where('user_id', auth()->user()->id)->get();
+            $this->experiences = ModelsExperience::with('achievements')->where('user_id', auth()->user()->id)->oldest()->get();
         } else {
             $user = User::where('role_id', 1)->first();
-            $this->experiences = ModelsExperience::with('achievements')->where('user_id', $user->id)->get();
+            $this->experiences = ModelsExperience::with('achievements')->where('user_id', $user->id)->oldest()->get();
         }
         return view('livewire.experiences.experience');
     }
@@ -61,23 +63,24 @@ class Experience extends Component
     public function showAddExperience()
     {
         $this->experience = '';
-        $this->action = 'add';
+        $this->action = 'Add';
     }
 
     public function hideAddExperience()
     {
         $this->experience = 'hidden';
         $this->reset(['title', 'company', 'location', 'start', 'achievements', 'end', 'achievementRows']);
+        $data = [
+            'achievement' => '',
+            'end' => '',
+        ];
+        $this->emit('update-achievements', $data);
     }
 
-    public function toggleEndDate()
+    public function toggleEndDate($value)
     {
-        if ($this->showEnd == 'hidden') {
-            $this->showEnd = 'flex';
-        } else {
-            $this->showEnd = 'hidden';
-            $this->end = 'Present';
-        }
+        $this->showEnd = $value;
+        
     }
 
 
@@ -110,8 +113,9 @@ class Experience extends Component
     public function addExperience($formData)
     {
         $this->start = $formData['start'];
-        // $this->validate();
-        if($this->end == '') {
+        $this->end = $formData['end'];
+        $this->validate();
+        if($this->showEnd == 'hidden') {
             $this->end = 'Present';
         }
         if($formData['achievements'] == '') {
@@ -119,7 +123,7 @@ class Experience extends Component
             return;
         }
         // dd($formData['achievements']);
-        $expr = ModelsExperience::create(
+        ModelsExperience::create(
             [
                 'title' => $this->title,
                 'company' => $this->company,
@@ -135,13 +139,18 @@ class Experience extends Component
         
         session()->flash('feedback', 'Experience successfully added.');
         $this->reset(['title', 'company', 'location', 'start', 'achievements', 'end', 'achievementRows']);
+        $data = [
+            'achievement' => '',
+            'end' => '',
+        ];
+        $this->emit('update-achievements', $data);
     }
 
     // edit experience
 
     public function showEditExperience($id)
     {
-        $this->action = 'edit';
+        $this->action = 'Update';
 
         $this->experience = '';
         $qs = ModelsExperience::with('achievements')->find($id);
@@ -152,8 +161,48 @@ class Experience extends Component
         $this->end = $qs->to;
         $this->achievements = $qs->achievements;
 
+        $this->expID = $id;
+        $data = [
+            'achievement' => $this->achievements,
+            'end' => $this->end,
+        ];
+        $this->emit('update-achievements', $data);
+    }
 
-        $this->emit('tinymce-trigger-save');
+
+    public function updateExperience($formData)
+    {
+        $this->start = $formData['start'];
+        $this->end = $formData['end'];
+        // dd($this->end);
+        $this->validate();
+        if($this->end == '') {
+            $this->end = 'Present';
+        }
+        if($formData['achievements'] == '') {
+            $this->emit('error', 'Achievement(s) field should be filled!');
+            return;
+        }
+        // dd($formData['achievements']);
+        $expr = ModelsExperience::find($this->expID);
+        if($expr) {
+            $expr->title = $this->title;
+            $expr->company = $this->company;
+            $expr->location = $this->location;
+            $expr->from = $this->start;
+            $expr->to = $this->end;
+            $expr->achievements = $formData['achievements'];
+
+            $expr ->save();
+        }
+        $this->hideAddExperience();
+
+        $this->dispatchBrowserEvent('openjobsaved');
+        $this->emit('feedback', 'Experience successfully updated.');
+        // $this->emit('update-achievements', '');
+        
+        session()->flash('feedback', 'Experience successfully updated.');
+        // $this->reset(['title', 'company', 'location', 'start', 'achievements', 'end', 'achievementRows']);
     }
 
     // delete experience

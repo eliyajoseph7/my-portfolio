@@ -9,16 +9,18 @@ class Form extends Component
     public $showEnd;
     public $toPresent;
     public $achievementRows;
+    public $action;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($showEnd, $toPresent, $achievementRows)
+    public function __construct($showEnd, $toPresent, $achievementRows, $action)
     {
         $this->showEnd = $showEnd;
         $this->toPresent = $toPresent;
         $this->achievementRows = $achievementRows;
+        $this->action = $action;
     }
 
     /**

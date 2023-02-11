@@ -17,7 +17,7 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                             </svg>
                         </button>
-                        <h2 class="text-2xl font-serif text-x" id="add-experience">Add Working Experience</h2>
+                        <h2 class="text-2xl font-serif text-x" id="add-experience">{{ $action }} Working Experience </h2>
                     </div>
                     @if (session()->has('feedback'))
                     <div id="alert-3" class="flex p-4 mb-4 bg-green-100 rounded-lg dark:bg-green-200" role="alert">
@@ -59,7 +59,7 @@
                         <div class="absolute inset-0 px-4 sm:px-6">
                             <div class="h-full border-2 border-dashed border-gray-200" aria-hidden="true">
 
-                                <form class="p-2" method="dialog" wire:submit.prevent="addExperience(Object.fromEntries(new FormData($event.target)))">
+                                <form class="p-2" method="dialog" wire:submit.prevent="{{ lcfirst($action) }}Experience(Object.fromEntries(new FormData($event.target)))">
                                     <div class="mb-6">
                                         <label for="title" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Title/ Position</label>
                                         <input type="text" wire:model.debounce-500ml="title" name="title" id="title" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Software Engineer">
@@ -85,11 +85,11 @@
                                                         <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path>
                                                     </svg>
                                                 </div>
-                                                <input datepicker datepicker-format="mm/yyyy" name="start" type="text" class="start bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 datepicker-input" placeholder="Select date start" >
+                                                <input wire:model='start' datepicker datepicker-format="mm/yyyy" name="start" type="text" class="start bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 datepicker-input" placeholder="Select date start" >
                                                 @error('start')<div class="text-red-600 font-italic">{{ $message }}</div>@enderror
                                             </div>
                                             <span class="mx-4 text-gray-500">to</span>
-                                            <div class="relative w-full  {{ $showEnd }}">
+                                            <div class="relative w-full  show-end">
                                                 <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
                                                     <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                                         <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path>
@@ -100,7 +100,8 @@
                                             <div class="w-full pr-3">
                                                 <div class="flex items-center pl-3 cursor-pointer">
                                                     <div class="flex items-center ">
-                                                        <input id="present" wire:change="toggleEndDate()" type="checkbox" {{ $toPresent }} value="" class="w-4 h-4 cursor-pointer bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800">
+                                                        <!-- <input id="present" wire:change="toggleEndDate()" type="checkbox" {{ $toPresent }} value="" class="w-4 h-4 cursor-pointer bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"> -->
+                                                        <input id="present" type="checkbox" {{ $toPresent }} value="" class="w-4 h-4 cursor-pointer bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800">
                                                     </div>
                                                     <label for="present" name="end" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300 cursor-pointer">Present</label>
                                                 </div>
@@ -119,7 +120,7 @@
                                         <label for="achievements" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Achievements</label>
                                         <textarea type="text" id="achievements" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"></textarea>
                                     </div> -->
-                                    <button wire:click="$emit('tinymce-trigger-save')" type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Save</button>
+                                    <button wire:click="$emit('tinymce-trigger-save')" type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">{{ $action }}</button>
                                 </form>
 
                             </div>

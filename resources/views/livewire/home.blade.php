@@ -25,7 +25,7 @@
             toast: true,
             position: 'top-end',
             showConfirmButton: false,
-            timer: 10000,
+            timer: 5000,
             timerProgressBar: true,
             didOpen: (toast) => {
                 toast.addEventListener('mouseenter', Swal.stopTimer)
@@ -65,7 +65,7 @@
             }
         }
         tinymce.init({
-            selector: 'textarea',
+            selector: '.textarea',
             plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
             toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
         });
