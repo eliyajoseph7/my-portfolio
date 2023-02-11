@@ -1,4 +1,7 @@
 <div class="fixed inset-0 overflow-hidden {{$experience}} z-50">
+    @props([
+        $active_action => 'visible'
+    ])
 
     @if ($action == 'add')
         <x-experiences.form :showEnd='$showEnd' :toPresent='$toPresent' :achievementRows='$achievementRows'>

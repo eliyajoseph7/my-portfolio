@@ -8,8 +8,9 @@
         @endif
         <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity {{$experience}} " wire:click="hideAddExperience()"></div>
 
+        <livewire.experiences.add_experience />
         @include('livewire.experiences.add_experience')
-        <h3 class="text-gray-800 px-5 py-3 bg-white hover:text-gray-900 tracking-tight cursor-pointer text-3xl font-bold dark:text-white font-mono">Work Experience</h3>
+        <h3 class="text-gray-800 px-5 py-3 bg-white hover:text-gray-900 tracking-tight cursor-pointer text-3xl font-bold dark:text-white font-mono">Work Experience {{$action}}</h3>
         <hr>
         <div class="w-full">
             @forelse ($experiences as $exp)

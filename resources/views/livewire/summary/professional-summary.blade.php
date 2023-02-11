@@ -12,7 +12,7 @@
         <div class="lg:col-span-2 col-span-1 text-gray-700 text-justify leading-relaxed text-lg dark:text-white w-96 md:w-full px-3 bg-slate-50 bg-clip-border">
             <a href="#" class="float-left flex lg:ml-auto  w-24 pb-6 min-w-md bg-black rounded-3xl ring-4 mr-5  hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 h-20 lg:h-24 bg-no-repeat bg-cover bg-center" style="background-image: url('https://www.classicinformatics.com/hubfs/custom%20software%20development%20company%20%281%29.png');">
             </a>
-            {{ $mysummary }}
+            {!! $mysummary !!}
         </div>
         <!-- <img src="https://www.classicinformatics.com/hubfs/custom%20software%20development%20company%20%281%29.png" alt="me" class="rounded-md cursor-pointer border-4 img-fluid bg-cover border-white w-96 h-32 lg:w-96 lg:h-36 ring-8 ring-offset-0 ring-white ring-inset lg:m-auto"> -->
         <!-- <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolore eos vitae nobis quasi cumque omnis!</p> -->
