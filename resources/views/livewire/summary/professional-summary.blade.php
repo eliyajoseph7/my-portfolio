@@ -1,8 +1,8 @@
-<div class="p-5">
+<div class="p-5 summary-action">
     @if (auth()->check())
     <div class="float-right">
         <button data-modal-target="summary-modal" data-modal-backdrop="dynamic" data-modal-toggle="summary-modal" class="block text-white " type="button">
-            <i class="fa fa-plus-circle fa-2xl cursor-pointer text-blue-400 hover:text-blue-800 pr-3 relative {{ $hide }}"></i>
+            <i class="fa fa-plus-circle fa-2xl cursor-pointer text-blue-400 hover:text-blue-800 relative {{ $hide }} hidden border rounded-md px-3 py-5 hover:shadow-sm summary-btn"></i>
         </button>
     </div>
     @endif
@@ -70,4 +70,11 @@
         // $('#save-summary').click();
         $('#summary-modal').toggle();
     })
+
+
+    $(".summary-action").hover(function(){
+        $('.summary-btn').css("display", "inline-flex");
+    }, function(){
+        $('.summary-btn').css("display", "none");
+    });
 </script>

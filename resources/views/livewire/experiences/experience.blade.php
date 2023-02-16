@@ -19,8 +19,8 @@
                     <h1 class="text-3xl font-serif italic w-96 md:w-full">
                         <i class="fa fa-star text-gray-500"></i> {{$exp->title}} - {{ $exp->company }}
                         @auth ()
-                        <i class="fa fa-edit fa-xs items-center cursor-pointer text-blue-400 hover:text-blue-800 p-2 relative actions{{$exp->id}} hidden border rounded-md shadow-sm hover:shadow-md py-4" aria-labelledby="add-experience" role="dialog" aria-modal="true" wire:click="showEditExperience({{ $exp->id }})"></i>
-                        <i wire:click="$emit('delete_experience', {{$exp->id}})" class="fa fa-trash-alt fa-xs items-center cursor-pointer text-red-400 hover:text-red-800 p-2 relative actions{{$exp->id}} hidden border rounded-md shadow-sm hover:shadow-md py-4" aria-labelledby="add-experience" role="dialog" aria-modal="true" wire:click="showEditExperience({{ $exp->id }})"></i>
+                        <i class="fa fa-edit fa-xs items-center cursor-pointer text-blue-400 hover:text-blue-800 p-1 relative actions{{$exp->id}} hidden border rounded-md shadow-sm hover:shadow-md py-4" aria-labelledby="add-experience" role="dialog" aria-modal="true" wire:click="showEditExperience({{ $exp->id }})"></i>
+                        <i wire:click="$emit('delete_experience', {{$exp->id}})" class="fa fa-trash-alt fa-xs items-center cursor-pointer text-red-400 hover:text-red-800 p-1 relative actions{{$exp->id}} hidden border rounded-md shadow-sm hover:shadow-md py-4" aria-labelledby="add-experience" role="dialog" aria-modal="true" wire:click="showEditExperience({{ $exp->id }})"></i>
                         @endauth
                     </h1>
                 </div>

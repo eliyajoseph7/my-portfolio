@@ -9,11 +9,20 @@
             </div>
             @livewire('experiences.experience')
             
+            <div class="mt-5">
+                @livewire('project-and-skill.my-project')
+            </div>
+            <div class="mt-5">
+                @livewire('educations.my-education')
+            </div>
         </div>
         <div class="lg:colspan-1 mt-5 lg:mt-0">
             @livewire('project-and-skill.my-skill')
-            @livewire('project-and-skill.my-project')
-            
+            @livewire('certificates.my-certificates')
+            @livewire('publications.my-publications')
+            @livewire('volunteers.my-volunteer')
+            {{-- @livewire('languages.my-languages')
+            @livewire('interests.my-interests') --}}
         </div>
     </div>
 </div>

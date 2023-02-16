@@ -10,14 +10,18 @@ class MySkill extends Component
 {
 
     public $skills = [];
+    public $action = 'Add';
 
     public $skill;
     public $skill_flag = '';
     public $hide = '';
+    public $skillId = '';
 
     protected $rules = [
         'skill' => 'required|min:5',
     ];
+
+    protected $listeners = ['deleteSkill'];
 
     public function mount()
     {
@@ -53,7 +57,9 @@ class MySkill extends Component
     public function showAddSkill()
     {
         $this->skill_flag = '';
+        $this->action = 'Add';
         $this->hide = 'hidden';
+        $this->reset('skill');
     }
 
     public function hideAddSkill()
@@ -75,6 +81,28 @@ class MySkill extends Component
         $this->render();
     }
 
+    // Edit
+    public function showEditSkill($id)
+    {
+        $skill = Skill::find($id);
+        $this->skill = $skill->skill;
+        $this->skill_flag = '';
+        $this->action = 'Edit';
+        $this->hide = 'hidden';
+        $this->skillId = $id;
+    }
+
+    public function editSkill()
+    {
+        $this->validate();
+        $skill = Skill::find($this->skillId);
+        $skill->skill = $this->skill;
+
+        $skill->save();
+        // array_push($this->skills, $this->skill);
+        session()->flash('feedback', 'Skill successfully updated.');
+        $this->reset('skill');
+    }
     public function deleteSkill($skillId)
     {
         Skill::find($skillId)->delete();

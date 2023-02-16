@@ -17,7 +17,7 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                             </svg>
                         </button>
-                        <h2 class="text-2xl font-serif text-x" id="add-{{$component}}">Add New <span class="capitalize">{{$component}}</span></h2>
+                        <h2 class="text-2xl font-serif text-x" id="add-{{$component}}">{{ $action }}  <span class="capitalize">{{$component}}</span></h2>
                     </div>
                     @if (session()->has('feedback'))
                     <div id="alert-3" class="flex p-4 mb-4 bg-green-100 rounded-lg dark:bg-green-200" role="alert">
