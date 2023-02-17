@@ -16,11 +16,11 @@
             @forelse ($experiences as $exp)
             <div class="bg-white px-5 experience hover:cursor-pointer mt-2" action-btn="actions{{$exp->id}}">
                 <div class="">
-                    <h1 class="text-3xl font-serif italic w-96 md:w-full">
-                        <i class="fa fa-star text-gray-500"></i> {{$exp->title}} - {{ $exp->company }}
+                    <h1 class="font-serif italic w-96 md:w-full">
+                        <i class="fa fa-star fa-xl text-gray-500"></i><span class="text-3xl"> {{$exp->title}} - {{ $exp->company }}</span>
                         @auth ()
-                        <i class="fa fa-edit fa-xs items-center cursor-pointer text-blue-400 hover:text-blue-800 p-1 relative actions{{$exp->id}} hidden border rounded-md shadow-sm hover:shadow-md py-4" aria-labelledby="add-experience" role="dialog" aria-modal="true" wire:click="showEditExperience({{ $exp->id }})"></i>
-                        <i wire:click="$emit('delete_experience', {{$exp->id}})" class="fa fa-trash-alt fa-xs items-center cursor-pointer text-red-400 hover:text-red-800 p-1 relative actions{{$exp->id}} hidden border rounded-md shadow-sm hover:shadow-md py-4" aria-labelledby="add-experience" role="dialog" aria-modal="true" wire:click="showEditExperience({{ $exp->id }})"></i>
+                        <i class="fa fa-edit fa-xs hover:bg-slate-200 items-center cursor-pointer text-blue-400 hover:text-blue-800 px-2 relative actions{{$exp->id}} hidden border rounded-md shadow-sm hover:shadow-md py-3" aria-labelledby="add-experience" role="dialog" aria-modal="true" wire:click="showEditExperience({{ $exp->id }})"></i>
+                        <i wire:click="$emit('delete_experience', {{$exp->id}})" class="fa fa-trash-alt fa-xs hover:bg-slate-200 items-center cursor-pointer text-red-400 hover:text-red-800 px-2 relative actions{{$exp->id}} hidden border rounded-md shadow-sm hover:shadow-md py-3" aria-labelledby="add-experience" role="dialog" aria-modal="true" wire:click="showEditExperience({{ $exp->id }})"></i>
                         @endauth
                     </h1>
                 </div>

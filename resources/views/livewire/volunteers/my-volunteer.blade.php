@@ -10,7 +10,7 @@
         <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity {{$volunteer_flag}} " wire:click="hideAddVolunteer()"></div>
 
         @include('livewire.volunteers.add_volunteer')
-        <h3 class="text-gray-800 px-5 py-3 hover:text-gray-900 font-bold text-2xl tracking-tight cursor-pointer dark:text-white font-mono">
+        <h3 class="text-gray-800 px-5 py-3 hover:text-gray-900 font-bold text-3xl tracking-tight cursor-pointer dark:text-white font-mono">
             Volunteer Experience
         </h3>
         <hr>

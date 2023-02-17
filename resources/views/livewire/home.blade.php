@@ -21,8 +21,8 @@
             @livewire('certificates.my-certificates')
             @livewire('publications.my-publications')
             @livewire('volunteers.my-volunteer')
-            {{-- @livewire('languages.my-languages')
-            @livewire('interests.my-interests') --}}
+            @livewire('languages.my-languages')
+            @livewire('interests.my-interests')
         </div>
     </div>
 </div>
