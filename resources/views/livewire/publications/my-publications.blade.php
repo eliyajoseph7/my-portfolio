@@ -11,7 +11,7 @@
 
         @include('livewire.publications.add_publication')
         <h3 class="text-gray-800 px-5 py-3 hover:text-gray-900 font-bold text-3xl tracking-tight cursor-pointer dark:text-white font-mono">
-            Publications
+        <i class="fa fa-book-open fa-sm text-gray-500"></i> Publications
         </h3>
         <hr>
         <div class="px-5 py-2">

@@ -9,7 +9,7 @@
             <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity {{$skill_flag}} " wire:click="hideAddSkill()"></div>
 
             @include('livewire.project-and-skill.skills.add_skill')
-            <h3 class="text-left px-5 py-3 font-bold text-3xl tracking-tight text-gray-800 hover:text-gray-900 cursor-pointer dark:text-white font-serif">Skills</h3>
+            <h3 class="text-left px-5 py-3 font-bold text-3xl tracking-tight text-gray-800 hover:text-gray-900 cursor-pointer dark:text-white font-serif"><i class="fa fa-code fa-sm text-gray-500"></i> Skills</h3>
             <hr>
             <div class="px-5 py-2">
                 @forelse ($skills as $skill)

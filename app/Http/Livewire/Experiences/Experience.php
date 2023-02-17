@@ -22,7 +22,7 @@ class Experience extends Component
     public $experiences = [];
 
     public $showEnd = 'hidden';
-    public $toPresent = 'checked';
+    public $toPresent = '';
 
     public $achievementRows = [];
     public $achievementLenght = 0;

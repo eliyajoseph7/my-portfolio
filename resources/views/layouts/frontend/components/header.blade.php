@@ -1,5 +1,5 @@
 
-<div class="mb-5">
+<div class="mb-5 w-screen md:w-full">
     <div class="block border-b-2 shadow-xs pb-32 rounded-t-xl rounded-b-md">
         <a href="#" class="block bg-clip-border w-100 pb-6 min-w-md bg-white rounded-t-xl border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 h-28 lg:h-48 bg-no-repeat bg-cover bg-center" style="background-image: url('assets/images/bg/pc-2.jpg');">
         </a>

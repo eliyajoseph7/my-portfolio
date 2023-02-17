@@ -1,5 +1,5 @@
 <div>
-    <div class="border bg-white rounded-lg mb-3 language-action">
+    <div class="border bg-white rounded-lg mb-3 language-action w-screen md:w-full">
         <div class="p-0">
             @if (auth()->check())
                 <div class="float-right">
@@ -9,7 +9,7 @@
             <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity {{$language_flag}} " wire:click="hideAddLanguage()"></div>
 
             @include('livewire.languages.add-language')
-            <h3 class="text-left px-5 py-3 font-bold text-3xl tracking-tight text-gray-800 hover:text-gray-900 cursor-pointer dark:text-white font-serif">Languages</h3>
+            <h3 class="text-left px-5 py-3 font-bold text-3xl tracking-tight text-gray-800 hover:text-gray-900 cursor-pointer dark:text-white font-serif"><i class="fa fa-language fa-sm text-gray-500"></i> Languages</h3>
             <hr>
             <div class="px-5 py-2">
                 @forelse ($languages as $language)

@@ -1,5 +1,5 @@
 
-<div class="border bg-slate-100 shadow-sm rounded-lg border-b-slate-200 exp-main" add-btn="add-btn">
+<div class="border bg-slate-100 shadow-sm rounded-lg border-b-slate-200 exp-main w-screen md:w-full" add-btn="add-btn">
     <div class="p-0">
         @if (auth()->check())
         <div class="float-right">
@@ -10,11 +10,11 @@
         <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity {{$experience}} " wire:click="hideAddExperience()"></div>
 
         @include('livewire.experiences.add_experience')
-        <h3 class="text-gray-800 px-5 py-3 bg-white hover:text-gray-900 tracking-tight cursor-pointer text-3xl font-bold dark:text-white font-mono">Work Experience {{$action}}</h3>
+        <h3 class="text-gray-800 px-5 py-3 bg-white hover:text-gray-900 tracking-tight cursor-pointer text-3xl font-bold dark:text-white font-mono"><i class="fa fa-tasks fa-sm text-gray-500"></i> Work Experience</h3>
         <hr>
         <div class="w-full">
             @forelse ($experiences as $exp)
-            <div class="bg-white px-5 experience hover:cursor-pointer mt-2" action-btn="actions{{$exp->id}}">
+            <div class="bg-white px-3 experience hover:cursor-pointer mt-2" action-btn="actions{{$exp->id}}">
                 <div class="">
                     <h1 class="font-serif italic w-96 md:w-full">
                         <i class="fa fa-star fa-xl text-gray-500"></i><span class="text-3xl"> {{$exp->title}} - {{ $exp->company }}</span>
@@ -28,7 +28,7 @@
                 <a class="py-1 pl-10 text-lg w-full"></a>
 
                 <h2 class="pl-10 mb-2 text-lg font-semibold italic text-gray-900 dark:text-white w-full">Achievements:</h2>
-                <div class="space-y-1 px-5 pb-3 list-inside text-gray-500 dark:text-gray-400 w-96 md:w-full">
+                <div class="space-y-1 px-5 pb-3 list-outside text-gray-500 dark:text-gray-400 w-96 md:w-full">
                     {!! $exp->achievements !!}
 
                 </div>

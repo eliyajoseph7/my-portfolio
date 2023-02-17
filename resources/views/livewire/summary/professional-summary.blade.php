@@ -1,4 +1,4 @@
-<div class="p-5 summary-action">
+<div class="p-5 summary-action w-screen md:w-full">
     @if (auth()->check())
     <div class="float-right">
         <button data-modal-target="summary-modal" data-modal-backdrop="dynamic" data-modal-toggle="summary-modal" class="block text-white " type="button">
@@ -8,9 +8,9 @@
     @endif
     <h2 class="text-gray-800 py-1 tracking-tight hover:text-gray-900 cursor-pointer text-3xl font-bold dark:text-white font-mono">Professional Summary</h3>
     <hr>
-    <div class="lg:grid lg:grid-flow-col lg:grid-cols-1 w-96 md:w-full">
-        <div class="lg:col-span-2 col-span-1 text-gray-700 text-justify leading-relaxed text-lg dark:text-white w-96 md:w-full px-3 bg-slate-50 bg-clip-border">
-            <a href="#" class="float-left flex lg:ml-auto  w-24 pb-6 min-w-md bg-black rounded-3xl ring-4 mr-5  hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 h-20 lg:h-24 bg-no-repeat bg-cover bg-center" style="background-image: url('https://www.classicinformatics.com/hubfs/custom%20software%20development%20company%20%281%29.png');">
+    <div class="md:grid md:grid-flow-col md:grid-cols-1 w-full">
+        <div class="md:col-span-2 col-span-1 text-gray-700 text-justify leading-relaxed text-lg dark:text-white md:w-full bg-slate-50 bg-clip-border w-full pr-2">
+            <a href="#" class="float-left flex md:ml-auto  w-24 pb-6 min-w-md bg-black rounded-3xl ring-4 mr-5  hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 h-20 lg:h-24 bg-no-repeat bg-cover bg-center" style="background-image: url('https://www.classicinformatics.com/hubfs/custom%20software%20development%20company%20%281%29.png');">
             </a>
             {!! $mysummary !!}
         </div>

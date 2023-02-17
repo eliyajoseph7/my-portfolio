@@ -1,5 +1,5 @@
 <div>
-    <div class="border bg-white rounded-lg mb-3 interest-action">
+    <div class="border bg-white rounded-lg mb-3 interest-action w-screen md:w-full">
         <div class="p-0">
             @if (auth()->check())
                 <div class="float-right">
@@ -9,7 +9,7 @@
             <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity {{$interest_flag}} " wire:click="hideAddInterest()"></div>
 
             @include('livewire.interests.add-interest')
-            <h3 class="text-left px-5 py-3 font-bold text-3xl tracking-tight text-gray-800 hover:text-gray-900 cursor-pointer dark:text-white font-serif">Interests</h3>
+            <h3 class="text-left px-5 py-3 font-bold text-3xl tracking-tight text-gray-800 hover:text-gray-900 cursor-pointer dark:text-white font-serif"><i class="fa fa-thumbs-up fa-sm text-gray-500"></i> Interests</h3>
             <hr>
             <div class="px-5 py-2">
                 @forelse ($interests as $interest)

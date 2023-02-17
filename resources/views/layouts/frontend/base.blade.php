@@ -32,7 +32,7 @@
 
 <body class="antialiased h-full w-screen">
     @livewireScripts
-    <div class="w-full">
+    <div class="w-screen">
         @include('layouts.frontend.components.nav')
     
         <div class="mt-14">

@@ -1,4 +1,4 @@
-<div>
+<div class="w-screen md:w-full">
     <div class="border bg-white rounded-lg mb-5 project-action">
         <div class="p-0">
             @if (auth()->check())
@@ -12,7 +12,7 @@
             @include('livewire.project-and-skill.projects.add_project')
             
             <h3 class="text-gray-800 px-5 py-3 hover:text-gray-900 font-bold text-3xl tracking-tight cursor-pointer dark:text-white font-mono">
-                Personal Projects
+                <i class="fa fa-project-diagram fa-sm text-gray-500"></i> Personal Projects
             </h3>
             <hr>
             <div class="px-5 py-2">
