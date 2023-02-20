@@ -14,9 +14,9 @@
         <hr>
         <div class="w-full">
             @forelse ($experiences as $exp)
-            <div class="bg-white px-3 experience hover:cursor-pointer mt-2" action-btn="actions{{$exp->id}}">
-                <div class="">
-                    <h1 class="font-serif italic w-96 md:w-full">
+            <div class="bg-white px-5 experience hover:cursor-pointer mt-2 w-full" action-btn="actions{{$exp->id}}">
+                <div class="text-justify">
+                    <h1 class="font-serif italic w-full">
                         <i class="fa fa-star fa-xl text-gray-500"></i><span class="text-3xl"> {{$exp->title}} - {{ $exp->company }}</span>
                         @auth ()
                         <i class="fa fa-edit fa-xs hover:bg-slate-200 items-center cursor-pointer text-blue-400 hover:text-blue-800 px-2 relative actions{{$exp->id}} hidden border rounded-md shadow-sm hover:shadow-md py-3" aria-labelledby="add-experience" role="dialog" aria-modal="true" wire:click="showEditExperience({{ $exp->id }})"></i>
@@ -24,11 +24,11 @@
                         @endauth
                     </h1>
                 </div>
-                <a class="py-1 pl-10 text-lg w-96 md:w-full">{{ $exp->location }} {{ $exp->from }} - {{ $exp->to }}</a>
+                <a class="py-1 pl-10 text-lg w-full">{{ $exp->location }} {{ $exp->from }} - {{ $exp->to }}</a>
                 <a class="py-1 pl-10 text-lg w-full"></a>
 
                 <h2 class="pl-10 mb-2 text-lg font-semibold italic text-gray-900 dark:text-white w-full">Achievements:</h2>
-                <div class="space-y-1 px-5 pb-3 list-outside text-gray-500 dark:text-gray-400 w-96 md:w-full">
+                <div class="space-y-1 px-5 pb-3 text-justify list-outside text-gray-500 dark:text-gray-400 w-full">
                     {!! $exp->achievements !!}
 
                 </div>

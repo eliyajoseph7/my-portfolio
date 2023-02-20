@@ -17,11 +17,9 @@
         <div class="px-5 py-2">
             @if ($publications)
             <div class="flex justify-between publication cursor-pointer" rmv="publication" icn="prj">
-                <div class="flex" aria-labelledby="add-publication" role="dialog" aria-modal="true" wire:click="showAddPublication)">
-                    <p>
+                <div class="" aria-labelledby="add-publication" role="dialog" aria-modal="true">
                         <!-- <i class="fa fa-angle-right pr-1" id="prj"></i> -->
                         {!! $publications->publication !!}
-                    </p>
                 </div>
                 @auth
                     <a href="#" class="text-white hidden" id="publication" wire:click="deletePublication{{ $publications->id }})"><i class="fa fa-minus fa-md px-2 py-1 bg-red-700 hover:bg-red-800 rounded-md "></i></a>

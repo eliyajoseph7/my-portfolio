@@ -1,29 +1,30 @@
-<div>
-    <div class="border bg-white rounded-lg mb-3 language-action w-screen md:w-full">
-        <div class="p-0">
-            @if (auth()->check())
-                <div class="float-right">
-                    <i class="fa fa-plus-circle fa-xl cursor-pointer text-blue-400 hover:text-blue-800 pr-3 relative  {{ $hide }} hidden border rounded-md p-4 hover:shadow-sm language-btn" aria-labelledby="add-language" role="dialog" aria-modal="true" wire:click="showAddLanguage()"></i>
-                </div>
-            @endif
-            <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity {{$language_flag}} " wire:click="hideAddLanguage()"></div>
-
-            @include('livewire.languages.add-language')
-            <h3 class="text-left px-5 py-3 font-bold text-3xl tracking-tight text-gray-800 hover:text-gray-900 cursor-pointer dark:text-white font-serif"><i class="fa fa-language fa-sm text-gray-500"></i> Languages</h3>
-            <hr>
-            <div class="px-5 py-2">
-                @forelse ($languages as $language)
-                <div class="flex justify-between language cursor-pointer" rmv="language{{ $loop->iteration }}" icn="skl{{ $loop->iteration }}">
-                    <p aria-labelledby="add-language" role="dialog" aria-modal="true" wire:click="showEditLanguage({{ $language->id }})"><i class="fa fa-check-circle pr-1" id="skl{{ $loop->iteration }}"></i>{{ $language->language }}</p>
-                    @auth
-                        <a href="#" class="text-white hidden" id="language{{ $loop->iteration }}" wire:click="$emit('delete-language', {{$language->id}})"><i class="fa fa-minus fa-md px-2 py-1 bg-red-700 hover:bg-red-800 rounded-md "></i></a>
-                    @endauth
-                </div>
-                @empty
-                    <p>No any language</p>
-                @endforelse
-
+<div class="border bg-white rounded-lg mb-3 language-action w-screen md:w-full">
+    <div class="p-0">
+        @if (auth()->check())
+            <div class="float-right">
+                <i class="fa fa-plus-circle fa-xl cursor-pointer text-blue-400 hover:text-blue-800 pr-3 relative  {{ $hide }} hidden border rounded-md p-4 hover:shadow-sm language-btn" aria-labelledby="add-language" role="dialog" aria-modal="true" wire:click="showAddLanguage()"></i>
             </div>
+        @endif
+        <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity {{$language_flag}} " wire:click="hideAddLanguage()"></div>
+
+        @include('livewire.languages.add-language')
+        <h3 class="text-left px-5 py-3 font-bold text-3xl tracking-tight text-gray-800 hover:text-gray-900 cursor-pointer dark:text-white font-serif"><i class="fa fa-language fa-sm text-gray-500"></i> Languages</h3>
+        <hr>
+        <div class="px-5 py-2">
+            @forelse ($languages as $language)
+            <div class="flex justify-between language cursor-pointer" rmv="language{{ $loop->iteration }}" icn="skl{{ $loop->iteration }}">
+                @guest
+                    <p aria-labelledby="add-language" role="dialog" aria-modal="true"><i class="fa fa-check-circle pr-1" id="skl{{ $loop->iteration }}"></i>{{ $language->language }}</p>
+                @endguest
+                @auth
+                    <p aria-labelledby="add-language" role="dialog" aria-modal="true" wire:click="showEditLanguage({{ $language->id }})"><i class="fa fa-check-circle pr-1" id="skl{{ $loop->iteration }}"></i>{{ $language->language }}</p>
+                    <a href="#" class="text-white hidden" id="language{{ $loop->iteration }}" wire:click="$emit('delete-language', {{$language->id}})"><i class="fa fa-minus fa-md px-2 py-1 bg-red-700 hover:bg-red-800 rounded-md "></i></a>
+                @endauth
+            </div>
+            @empty
+                <p>No any language</p>
+            @endforelse
+
         </div>
     </div>
 </div>

@@ -14,7 +14,12 @@
             <div class="px-5 py-2">
                 @forelse ($interests as $interest)
                 <div class="flex justify-between interest cursor-pointer" rmv="interest{{ $loop->iteration }}" icn="skl{{ $loop->iteration }}">
-                    <p aria-labelledby="add-interest" role="dialog" aria-modal="true" wire:click="showEditInterest({{ $interest->id }})"><i class="fa fa-check-circle pr-1" id="skl{{ $loop->iteration }}"></i>{{ $interest->interest }}</p>
+                    @auth
+                        <p aria-labelledby="add-interest" role="dialog" aria-modal="true" wire:click="showEditInterest({{ $interest->id }})"><i class="fa fa-check-circle pr-1" id="skl{{ $loop->iteration }}"></i>{{ $interest->interest }}</p>
+                    @endauth
+                    @guest
+                        <p aria-labelledby="add-interest" role="dialog" aria-modal="true"><i class="fa fa-check-circle pr-1" id="skl{{ $loop->iteration }}"></i>{{ $interest->interest }}</p>
+                    @endguest
                     @auth
                         <a href="#" class="text-white hidden" id="interest{{ $loop->iteration }}" wire:click="$emit('delete-interest', {{$interest->id}})"><i class="fa fa-minus fa-md px-2 py-1 bg-red-700 hover:bg-red-800 rounded-md "></i></a>
                     @endauth

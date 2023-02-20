@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::any('migrate', function() {
+    Artisan::call('migrate:fresh');
+});
 
 Route::get('/', \App\Http\Livewire\Home::class);
 

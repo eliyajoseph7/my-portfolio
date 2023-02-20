@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Certificates;
 
 use App\Models\Certificate;
+use App\Models\User;
 use Livewire\Component;
 
 class MyCertificates extends Component

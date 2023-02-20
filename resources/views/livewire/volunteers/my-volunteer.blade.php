@@ -17,7 +17,7 @@
         <div class="px-5 py-2">
             @if ($volunteers)
             <div class="flex justify-between volunteer cursor-pointer" rmv="volunteer" icn="prj">
-                <div class="flex" aria-labelledby="add-volunteer" role="dialog" aria-modal="true" wire:click="showAddVolunteer)">
+                <div class="" aria-labelledby="add-volunteer" role="dialog" aria-modal="true">
                     <p>
                         <!-- <i class="fa fa-angle-right pr-1" id="prj"></i> -->
                         {!! $volunteers->volunteer !!}

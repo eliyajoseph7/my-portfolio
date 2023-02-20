@@ -14,7 +14,12 @@
             <div class="px-5 py-2">
                 @forelse ($skills as $skill)
                 <div class="flex justify-between skill cursor-pointer" rmv="skill{{ $loop->iteration }}" icn="skl{{ $loop->iteration }}">
-                    <p aria-labelledby="add-skill" role="dialog" aria-modal="true" wire:click="showEditSkill({{ $skill->id }})"><i class="fa fa-check-circle pr-1" id="skl{{ $loop->iteration }}"></i>{{ $skill->skill }}</p>
+                    @auth
+                        <p aria-labelledby="add-skill" role="dialog" aria-modal="true" wire:click="showEditSkill({{ $skill->id }})"><i class="fa fa-check-circle pr-1" id="skl{{ $loop->iteration }}"></i>{{ $skill->skill }}</p>
+                    @endauth
+                    @guest
+                        <p aria-labelledby="add-skill" role="dialog" aria-modal="true"><i class="fa fa-check-circle pr-1" id="skl{{ $loop->iteration }}"></i>{{ $skill->skill }}</p>
+                    @endguest
                     @auth
                         <a href="#" class="text-white hidden" id="skill{{ $loop->iteration }}" wire:click="$emit('delete-skill', {{$skill->id}})"><i class="fa fa-minus fa-md px-2 py-1 bg-red-700 hover:bg-red-800 rounded-md "></i></a>
                     @endauth

@@ -16,7 +16,7 @@
                 @livewire('educations.my-education')
             </div>
         </div>
-        <div class="lg:colspan-1 mt-5 lg:mt-0">
+        <div class="lg:colspan-1 mt-5 lg:mt-0 w-full">
             @livewire('project-and-skill.my-skill')
             @livewire('certificates.my-certificates')
             @livewire('publications.my-publications')

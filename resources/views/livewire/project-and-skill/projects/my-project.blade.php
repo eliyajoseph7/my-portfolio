@@ -18,7 +18,7 @@
             <div class="px-5 py-2">
                 @if ($projects)
                 <div class="flex justify-between project cursor-pointer" rmv="project" icn="prj">
-                    <div class="flex" aria-labelledby="add-project" role="dialog" aria-modal="true" wire:click="showAddProject()">
+                    <div class="" aria-labelledby="add-project" role="dialog" aria-modal="true" @auth wire:click="showAddProject()" @endauth >
                         <p>
                             <!-- <i class="fa fa-angle-right pr-1" id="prj"></i> -->
                             {!! $projects->project !!}
