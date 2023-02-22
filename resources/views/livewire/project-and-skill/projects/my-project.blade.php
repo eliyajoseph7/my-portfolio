@@ -19,10 +19,10 @@
                 @if ($projects)
                 <div class="flex justify-between project cursor-pointer" rmv="project" icn="prj">
                     <div class="" aria-labelledby="add-project" role="dialog" aria-modal="true" @auth wire:click="showAddProject()" @endauth >
-                        <p>
+                        <div class="text-gray-700 hover:text-gray-900">
                             <!-- <i class="fa fa-angle-right pr-1" id="prj"></i> -->
                             {!! $projects->project !!}
-                        </p>
+                        </div>
                     </div>
                     @auth
                         <a href="#" class="text-white hidden" id="project" wire:click="deleteProject({{ $projects->id }})"><i class="fa fa-minus fa-md px-2 py-1 bg-red-700 hover:bg-red-800 rounded-md "></i></a>

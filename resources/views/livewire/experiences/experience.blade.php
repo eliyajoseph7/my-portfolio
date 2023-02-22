@@ -28,7 +28,7 @@
                 <a class="py-1 pl-10 text-lg w-full"></a>
 
                 <h2 class="pl-10 mb-2 text-lg font-semibold italic text-gray-900 dark:text-white w-full">Achievements:</h2>
-                <div class="space-y-1 px-5 pb-3 text-justify list-outside text-gray-500 dark:text-gray-400 w-full">
+                <div class="space-y-1 px-5 pb-3 text-justify list-outside text-gray-700 hover:text-gray-900 dark:text-gray-400 w-full">
                     {!! $exp->achievements !!}
 
                 </div>

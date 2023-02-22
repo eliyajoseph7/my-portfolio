@@ -16,16 +16,16 @@
             @forelse ($educations as $edu)
             <div class="bg-white px-5 education hover:cursor-pointer mt-2" action-btn="actions{{$edu->id}}">
                 <div class="">
-                    <h1 class="italic w-full">
-                        <i class="fa fa-book fa-md text-gray-500"></i><span class="italic text-2xl"> {{$edu->program}}</span>
+                    <h1 class="w-full">
+                        <i class="fa fa-book fa-md text-gray-500"></i><span class="font-serif italic text-2xl"> {{$edu->program}}</span>
                         @auth ()
                         <i class="fa fa-edit fa-xs hover:bg-slate-200 items-center cursor-pointer text-blue-400 hover:text-blue-800 px-2 relative actions{{$edu->id}} hidden border rounded-md shadow-sm hover:shadow-md py-3" aria-labelledby="add-education" role="dialog" aria-modal="true" wire:click="showEditEducation({{ $edu->id }})"></i>
                         <i wire:click="$emit('delete_education', {{$edu->id}})" class="fa fa-trash-alt fa-xs hover:bg-slate-200 items-center cursor-pointer text-red-400 hover:text-red-800 px-2 relative actions{{$edu->id}} hidden border rounded-md shadow-sm hover:shadow-md py-3" aria-labelledby="add-education" role="dialog" aria-modal="true" wire:click="showEditEducation({{ $edu->id }})"></i>
                         @endauth
-                        <div class="py-1 pl-7 text-xl w-full font-bold">{{ $edu->institution }}</div>
+                        <div class="py-1 pl-7 text-lg font-normal w-full ">{{ $edu->institution }}</div>
                     </h1>
                 </div>
-                <a class="py-1 pl-7 text-lg w-full">{{ $edu->location }} {{ $edu->from }} - {{ $edu->to }}</a>
+                <a class="py-1 pl-7 text-lg w-full text-gray-700 hover:text-gray-900">{{ $edu->location }} {{ $edu->from }} - {{ $edu->to }}</a>
                 <a class="py-1 pl-10 text-lg w-full"></a>
 
             </div>
