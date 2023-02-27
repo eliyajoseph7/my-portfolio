@@ -17,7 +17,7 @@
         <div class="px-5 py-2">
             @if ($certificates)
             <div class="flex justify-between certificate cursor-pointer" rmv="certificate" icn="prj">
-                <div class="" aria-labelledby="add-certificate" role="dialog" aria-modal="true" wire:click="showAddCertificate)">
+                <div class="" aria-labelledby="add-certificate" role="dialog" aria-modal="true" wire:click="showAddCertificate()">
                     <p>
                         <!-- <i class="fa fa-angle-right pr-1" id="prj"></i> -->
                         {!! $certificates->certificate !!}
