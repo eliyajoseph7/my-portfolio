@@ -31,7 +31,7 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
-<body class="antialiased h-full w-screen">
+<body class="antialiased h-full w-screen overflow-x-hidden">
     @livewireScripts
     <div class="w-screen">
         @include('layouts.frontend.components.nav')

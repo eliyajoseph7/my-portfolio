@@ -1,4 +1,4 @@
-<div>
+<div class="w-screen md:w-full">
     <div class="border bg-white rounded-lg mb-3 skill-action">
         <div class="p-0">
             @if (auth()->check())

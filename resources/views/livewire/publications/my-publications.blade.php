@@ -1,5 +1,5 @@
 
-<div class="border bg-white rounded-lg mb-3 publication-action">
+<div class="border bg-white rounded-lg mb-3 publication-action w-screen md:w-full">
     <div class="p-0">
         @if (auth()->check())
             <div class="float-right">
