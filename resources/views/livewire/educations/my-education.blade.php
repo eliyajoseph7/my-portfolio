@@ -1,5 +1,5 @@
 
-<div class="border bg-slate-100 shadow-sm rounded-lg border-b-slate-200 education-main w-screen md:w-full" add-btn="education-btn">
+<div class="border bg-white shadow-sm rounded-3xl border-b-slate-200 education-main w-screen md:w-full" add-btn="education-btn">
     <div class="p-0">
         @if (auth()->check())
         <div class="float-right">
@@ -10,11 +10,11 @@
         <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity {{$education}} " wire:click="hideAddEducation()"></div>
 
         @include('livewire.educations.add_education')
-        <h3 class="text-gray-800 px-5 py-3 bg-white hover:text-gray-900 tracking-tight cursor-pointer text-3xl font-bold dark:text-white font-mono"><i class="fa fa-graduation-cap fa-sm text-gray-500"></i> <span>Education</span> </h3>
+        <h3 class="text-gray-800 px-5 py-3 hover:text-gray-900 tracking-tight cursor-pointer text-3xl font-bold dark:text-white font-mono"><i class="fa fa-graduation-cap fa-sm text-gray-500"></i> <span>Education</span> </h3>
         <hr>
         <div class="w-full">
             @forelse ($educations as $edu)
-            <div class="bg-white px-5 education hover:cursor-pointer mt-2" action-btn="actions{{$edu->id}}">
+            <div class="px-5 education hover:cursor-pointer mt-2" action-btn="actions{{$edu->id}}">
                 <div class="">
                     <h1 class="w-full">
                         <i class="fa fa-book fa-md text-gray-500"></i><span class="font-serif italic text-2xl"> {{$edu->program}}</span>
