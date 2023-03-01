@@ -1,7 +1,7 @@
 <div class="container mx-auto w-screen md:w-full">
     <div class="grid grid-flow-row lg:grid-flow-col lg:grid-cols-4 lg:gap-3 auto-cols-max md:auto-cols-auto py-5">
         <div class="lg:col-span-3">
-            <div class="border bg-white shadow-sm rounded-lg mb-5 border-t-slate-300 w-screen md:w-full">
+            <div class="border bg-white shadow-sm rounded-lg mb-3 border-t-slate-300 w-screen md:w-full">
                 <div class="p-0">
                     @include('layouts.frontend.components.header')
                 </div>
@@ -9,14 +9,14 @@
             </div>
             @livewire('experiences.experience')
             
-            <div class="mt-5">
+            <div class="mt-3">
                 @livewire('project-and-skill.my-project')
             </div>
-            <div class="mt-5">
+            <div class="mt-3">
                 @livewire('educations.my-education')
             </div>
         </div>
-        <div class="lg:colspan-1 mt-5 lg:mt-0 w-full">
+        <div class="lg:colspan-1 mt-3 lg:mt-0 w-full">
             @livewire('project-and-skill.my-skill')
             @livewire('certificates.my-certificates')
             @livewire('publications.my-publications')
