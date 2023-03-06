@@ -6,19 +6,19 @@
             </a>
         </div>
         <div class="colspan-1 inline-flex  col-end-12 items-center">
-            <a href="#" class="inline-flex items-center px-1">
+            <a href="{{ $linkedin->link ?? '#' }}" class="inline-flex items-center px-1">
                 <i class="fab fa-linkedin  text-blue-700 hover:text-blue-800 fa-xl"></i>
                 <span class="hidden md:flex px-2 text-lg">Linkedin </span>
             </a>
-            <a href="#" class="inline-flex items-center px-1">
+            <a href="{{ $facebook->link ?? '#' }}" class="inline-flex items-center px-1">
                 <i class="fab fa-facebook  text-blue-700 hover:text-blue-800 fa-xl "></i>
                 <span class="hidden md:flex px-2 text-lg">Facebook</span>
             </a>
-            <a href="#" class="inline-flex items-center px-1">
+            <a href="{{ $instagram->link ?? '#' }}" class="inline-flex items-center px-1">
                 <i class="fab fa-instagram  text-blue-700 hover:text-blue-800 fa-xl "></i>
                 <span class="hidden md:flex px-2 text-lg">Instagram</span>
             </a>
-            <a href="#" class="inline-flex items-center px-1">
+            <a href="{{ $github->link ?? '#' }}" class="inline-flex items-center px-1">
                 <i class="fab fa-github  text-blue-700 hover:text-blue-800 fa-xl "></i>
                 <span class="hidden md:flex px-2 text-lg">GitHub</span>
             </a>

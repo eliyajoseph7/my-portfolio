@@ -115,7 +115,7 @@ class Experience extends Component
         $this->start = $formData['start'];
         $this->end = $formData['end'];
         $this->validate();
-        if($this->showEnd == 'hidden') {
+        if($this->end == '') {
             $this->end = 'Present';
         }
         if($formData['achievements'] == '') {
